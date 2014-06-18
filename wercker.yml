@@ -1,0 +1,19 @@
+box: wercker/rvm@2.0.1
+build:
+  steps:
+    - script:
+        name: Make $HOME/.ssh directory
+        code: mkdir -p $HOME/.ssh
+    - create-file:
+        name: put ssh private key
+        filename: $HOME/.ssh/aws.pem
+        overwrite: true
+        hide-from-log: true
+        content: $AWS_SSH_KEY_PRIVATE
+    - script:
+        name: run chmod 0400 $HOME/.ssh/aws.pem
+        code: chmod 0400 $HOME/.ssh/aws.pem
+    - bundle-install
+    - script:
+        name: kitchen run
+        code: bundle exec kitchen test
