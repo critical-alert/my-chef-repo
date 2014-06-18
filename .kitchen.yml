@@ -2,7 +2,7 @@
 driver:
   name: ec2
   aws_access_key_id: <%= ENV['AWS_ACCESS_KEY'] %>
-  aws_secret_access_key: <%= ENV['AWS_SECRET_KEY'] %>
+  aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
   aws_ssh_key_id: <%= ENV['AWS_SSH_KEY_ID'] %>
   ssh_key: <%= File.expand_path('~/.ssh/aws.pem') %>
   flavor_id: t1.micro
