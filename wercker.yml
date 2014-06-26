@@ -17,3 +17,8 @@ build:
     - script:
         name: kitchen run
         code: bundle exec kitchen test
+  after-steps:
+      - hipchat-notify:
+          token: $HIPCHAT_TOKEN
+          room-id: 613998
+          from-name: wercker
